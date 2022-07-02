@@ -1,0 +1,18 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: install php package
+    yum:
+      name: php
+
+  - name: ensure httpd is running
+    service:
+      name: httpd 
+      state: started    
+  - name: ensure httpd is running
+    service:
+      name: httpd 
+      state: reloaded
