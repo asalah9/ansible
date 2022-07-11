@@ -5,8 +5,9 @@
    - name: update apt repo
      apt:
        update_cache: yes
-
+     when: ansible_distribution  in ["Ubuntu" , "Debian"]
    - name: install apache2 package
      apt:
        name: apache2
        state: latest
+     when: ansible_distribution  in ["Ubuntu" , "Debina"]
