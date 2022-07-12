@@ -1,5 +1,9 @@
-[servers]
-target1 ansible_host=3.83.33.228 ansible_connection=ssh ansible_user=ubuntu
-target2 ansible_host=18.212.39.105 ansible_connection=ssh ansible_user=ubuntu
+[web_servers]
+target2 ansible_host=3.83.33.228 ansible_connection=ssh ansible_user=ubuntu
+target4 ansible_host=54.83.83.62 ansible_connection=ssh ansible_user=ec2-user
+
+[db_servers]
 target3 ansible_host=18.206.40.56 ansible_connection=ssh ansible_user=ubuntu
 
+#[Amazon]
+#target4 ansible_host=54.83.83.62 ansible_connection=ssh ansible_user=ec2-user
