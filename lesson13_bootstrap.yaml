@@ -1,5 +1,3 @@
- ---
- 
  - hosts: all
    become: true
    pre_tasks:
@@ -30,7 +28,7 @@
    - name: add ssh key for simone
      authorized_key:
        user: simone
-       key: "Add Key here"
+       key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCCisWVVca8PdieEDFbzgSrnwF21+N3IuekKNj58ToTHPNmf1EIbOi5mqj6fpXW2GxQEbQB3AWUI/JMnOAyDdYgewCA9cj79MIPBY8nu0ZFL/y5QLvs4UFbFVs+JAMGPlzbfWYQ0pzCJpDkSLZJEL8k7vuanlbCEnBdtogFNaiGG5Bao3ISznFg7Zbk1iu9wjRbKMJfRnIV0cMO4AV+ZpEx80FAkKM1NCK05Jz1nT+ePjIiDq30UwWl8wqgIf6UDQa2KKyroulk6tye4fgzR304y9J9OfayBtSsdnIrxXHSLku/WcKTmeknP3CX08Io4LfONB/9wPDC6ZtDO5ckW2OYMgCyrSJ9N+hYWOokJ40D9hlBb2+aA47xEEE+zXBnjJJ+bOStito29j/fBJRQUX5v5Ka60LQRqG60ZQYNOTDMg2JEMMwa9nkrBm1doBQYCSm4i2XWHfQriqkw6bNv83UrPs/f9VR4I2njkXr9MkbjUEdSMHp2RfYom3ImLgzmBRk= Ansible"
       
    - name: add sudoers file for simone
      copy:

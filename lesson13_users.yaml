@@ -1,4 +1,4 @@
-- hosts: all
+ - hosts: all
    become: true
    pre_tasks:
  
@@ -16,10 +16,7 @@
        update_cache: yes
      when: ansible_distribution == "Ubuntu"
  
-- hosts: all
-  become: true
-  tasks:
-	   
+ 
  - hosts: web_servers
    become: true
    tasks:
