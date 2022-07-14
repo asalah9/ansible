@@ -1,0 +1,27 @@
+ - hosts: all
+   become: true
+   pre_tasks:
+ 
+   - name: install updates (Amazon)
+     tags: always
+     yum:
+       update_only: yes
+       update_cache: yes
+     when: ansible_distribution == "Amazon"
+ 
+   - name: install updates (Ubuntu)
+     tags: always
+     apt:
+       upgrade: dist
+       update_cache: yes
+     when: ansible_distribution == "Ubuntu"
+ 
+ - hosts: web_servers
+   become: true
+   roles:
+     - web_servers
+ 
+ - hosts: db_servers
+   become: true
+   roles:
+     - db_servers 
