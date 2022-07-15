@@ -1,0 +1,51 @@
+
+   - name: install apache and php for Ubuntu servers
+     tags: apaches,apache2
+     apt:
+       name:
+         - apache2
+           # - "{{  php_package_name }}"
+       state: latest
+     when: ansible_distribution == "Ubuntu"
+
+   - name: install apache and php for CentOS servers
+     tags: httpd
+     yum:
+       name:
+         - httpd
+       state: latest
+     when: ansible_distribution == "Amazon"
+
+   - name: start and enable httpd (CentOS)
+     tags: apache,centos,httpd
+     service:
+       name: httpd
+       state: started
+       enabled: yes
+     when: ansible_distribution == "Amazon"
+
+   - name: copy html file for site
+     tags: apache,apache,apache2,httpd
+     copy:
+       src: default_site.html
+       dest: /var/www/html/index.html
+       owner: root
+       group: root
+       mode: 0644
+
+   - name: openssh | generate sshd_config file from template
+     tags: ssh
+     vars: 
+      ssh_template_file: "/home/ubuntu/ansible/roles/web_servers/templates/ssh_config_ubuntu.j2"
+     template:
+       src: "{{ ssh_template_file}}"
+       dest: /etc/ssh/sshd_config
+       owner: root
+       group: root
+       mode: 0644
+
+   - name: restart_sshd
+     service:
+      name: sshd
+      state: started
+      enabled: yes
